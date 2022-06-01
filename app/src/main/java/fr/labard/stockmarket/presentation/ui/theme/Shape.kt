@@ -1,4 +1,4 @@
-package fr.labard.stockmarket.ui.theme
+package fr.labard.stockmarket.presentation.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

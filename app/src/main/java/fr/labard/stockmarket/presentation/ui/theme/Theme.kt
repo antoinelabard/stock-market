@@ -1,4 +1,4 @@
-package fr.labard.stockmarket.ui.theme
+package fr.labard.stockmarket.presentation.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
