@@ -1,4 +1,4 @@
-package fr.labard.stockmarket.presentation
+package fr.labard.stockmarket
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
