@@ -6,6 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import fr.labard.stockmarket.data.csv.CSVParser
 import fr.labard.stockmarket.data.csv.CompanyListingsParser
+import fr.labard.stockmarket.data.csv.IntradayInfoParser
 import fr.labard.stockmarket.data.repository.StockRepositoryImpl
 import fr.labard.stockmarket.domain.model.CompanyListing
 import fr.labard.stockmarket.domain.model.IntradayInfo
@@ -25,7 +26,7 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindIntradayInfoParser(
-        companyListingsParser: CompanyListingsParser
+        intradayInfoParser: IntradayInfoParser
     ): CSVParser<IntradayInfo>
 
     @Binds
