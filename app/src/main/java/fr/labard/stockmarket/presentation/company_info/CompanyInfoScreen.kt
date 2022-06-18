@@ -56,7 +56,7 @@ fun CompanyInfoScreen(
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = "Inducstr: ${company.industry}",
+                    text = "Industry: ${company.industry}",
                     fontSize = 14.sp,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.fillMaxWidth()
