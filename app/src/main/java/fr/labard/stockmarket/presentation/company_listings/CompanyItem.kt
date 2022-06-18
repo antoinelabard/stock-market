@@ -35,15 +35,22 @@ fun CompanyItem(
                     color = MaterialTheme.colors.onBackground,
                     overflow = TextOverflow.Ellipsis,
                     maxLines = 1,
-                    modifier = Modifier.width(4.dp)
+                    modifier = Modifier.weight(1f)
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(
-                    text = "(${company.symbol}",
-                    fontStyle = FontStyle.Italic,
+                    text = company.exchange,
+                    fontWeight = FontWeight.Light,
                     color = MaterialTheme.colors.onBackground
                 )
             }
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "(${company.symbol})",
+                fontStyle = FontStyle.Italic,
+                color = MaterialTheme.colors.onBackground
+            )
+
         }
     }
 }
