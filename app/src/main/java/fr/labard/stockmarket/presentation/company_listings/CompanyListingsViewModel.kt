@@ -10,7 +10,6 @@ import fr.labard.stockmarket.common.util.Resource
 import fr.labard.stockmarket.domain.model.CompanyListingState
 import fr.labard.stockmarket.domain.repository.StockRepository
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -33,7 +32,6 @@ class CompanyListingsViewModel @Inject constructor(
                 state = state.copy(searchQuery = event.query)
                 searchJob?.cancel()
                 searchJob = viewModelScope.launch {
-                    delay(500L)
                     getCompanyListings()
                 }
             }
