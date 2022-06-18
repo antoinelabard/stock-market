@@ -17,13 +17,15 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.ramcosta.composedestinations.annotation.Destination
 import fr.labard.stockmarket.presentation.ui.theme.DarkBlue
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
+@Destination
 fun CompanyInfoScreen(
-    viewModel: CompanyInfoViewModel = hiltViewModel(),
-    symbol: String
+    symbol: String,
+    viewModel: CompanyInfoViewModel = hiltViewModel()
 ) {
     val state = viewModel.state
     if (state.error == null) {

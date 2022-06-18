@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.ramcosta.composedestinations.DestinationsNavHost
 import dagger.hilt.android.AndroidEntryPoint
+import fr.labard.stockmarket.presentation.NavGraphs
 import fr.labard.stockmarket.presentation.ui.theme.StockMarketTheme
 
 @AndroidEntryPoint
