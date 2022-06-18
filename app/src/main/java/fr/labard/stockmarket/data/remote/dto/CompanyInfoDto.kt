@@ -2,7 +2,7 @@ package fr.labard.stockmarket.data.remote.dto
 
 import com.squareup.moshi.Json
 
-data class CompanyInforDto(
+data class CompanyInfoDto(
     @field:Json(name = "Name") val name: String?,
     @field:Json(name = "Symbol") val symbol: String?,
     @field:Json(name = "Description") val description: String?,

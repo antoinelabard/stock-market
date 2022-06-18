@@ -1,6 +1,6 @@
 package fr.labard.stockmarket.data.remote
 
-import fr.labard.stockmarket.data.remote.dto.CompanyInforDto
+import fr.labard.stockmarket.data.remote.dto.CompanyInfoDto
 import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -22,7 +22,7 @@ interface StockApi {
     suspend fun getCompanyInfo(
         @Query("symbol") symbol: String,
         @Query("apikey") apiKey: String = API_KEY
-    ): CompanyInforDto
+    ): CompanyInfoDto
 
     companion object {
         const val API_KEY = "BFYNRU4N5LY3N4ZN"

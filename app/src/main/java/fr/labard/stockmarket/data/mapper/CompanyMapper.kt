@@ -1,7 +1,7 @@
 package fr.labard.stockmarket.data.mapper
 
 import fr.labard.stockmarket.data.local.CompanyListingEntity
-import fr.labard.stockmarket.data.remote.dto.CompanyInforDto
+import fr.labard.stockmarket.data.remote.dto.CompanyInfoDto
 import fr.labard.stockmarket.domain.model.CompanyInfo
 import fr.labard.stockmarket.domain.model.CompanyListing
 
@@ -17,7 +17,7 @@ fun CompanyListing.toCompanyListingEntity() = CompanyListingEntity(
     exchange = exchange
 )
 
-fun CompanyInforDto.toCompanyInfo(): CompanyInfo {
+fun CompanyInfoDto.toCompanyInfo(): CompanyInfo {
     return CompanyInfo(
         symbol = symbol ?: "",
         description = description ?: "",
