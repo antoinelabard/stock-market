@@ -25,17 +25,17 @@ fun StockChart(
     graphColor: Color = Color.Green
 ) {
     val spacing = 100f
-    val transparentColor = remember {
+    val transparentGraphColor = remember {
         graphColor.copy(alpha = 0.5f)
     }
     val upperValue = remember(infos) {
-        (infos.maxOfOrNull { it.close }?.plus(1)?.roundToInt()) ?: 0
+        (infos.maxOfOrNull { it.close }?.plus(1))?.roundToInt() ?: 0
     }
     val lowerValue = remember(infos) {
         infos.minOfOrNull { it.close }?.toInt() ?: 0
     }
     val density = LocalDensity.current
-    val textPaint = remember {
+    val textPaint = remember(density) {
         Paint().apply { // use android.graphics.Paint instead of android.compose.ui.graphics
             color = android.graphics.Color.WHITE
             textAlign = Paint.Align.CENTER
@@ -51,7 +51,8 @@ fun StockChart(
                 drawText(
                     hour.toString(),
                     spacing + i * spacePerHour,
-                    size.height - 5, textPaint
+                    size.height - 5,
+                    textPaint
                 )
             }
         }
@@ -76,7 +77,7 @@ fun StockChart(
                 val leftRatio = (info.close - lowerValue) / (upperValue - lowerValue)
                 val rightRatio = (nextInfo.close - lowerValue) / (upperValue - lowerValue)
 
-                val x1 = spacing + i + spacePerHour
+                val x1 = spacing + i * spacePerHour
                 val y1 = height - spacing - (leftRatio * height).toFloat()
                 val x2 = spacing + (i + 1) * spacePerHour
                 val y2 = height - spacing - (rightRatio * height).toFloat()
@@ -99,7 +100,7 @@ fun StockChart(
             path = fillPath,
             brush = Brush.verticalGradient(
                 colors = listOf(
-                    transparentColor,
+                    transparentGraphColor,
                     Color.Transparent
                 ),
                 endY = size.height - spacing
