@@ -20,8 +20,8 @@ import kotlin.math.roundToInt
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun StockChart(
-    infos: List<IntradayInfo> = emptyList(),
     modifier: Modifier = Modifier,
+    infos: List<IntradayInfo> = emptyList(),
     graphColor: Color = Color.Green
 ) {
     val spacing = 100f
@@ -49,7 +49,7 @@ fun StockChart(
             val hour = info.date.hour
             drawContext.canvas.nativeCanvas.apply {
                 drawText(
-                    hour.toString(),
+                    "${hour}h",
                     spacing + i * spacePerHour,
                     size.height - 5,
                     textPaint
@@ -57,10 +57,10 @@ fun StockChart(
             }
         }
         val priceStep = (upperValue - lowerValue) / 5f
-        (1..5).forEach { i ->
+        (1..4).forEach { i ->
             drawContext.canvas.nativeCanvas.apply {
                 drawText(
-                    round(lowerValue + priceStep * i).toString(),
+                    "${round(lowerValue + priceStep * i)}$",
                     30f,
                     size.height - spacing - i * size.height / 5f,
                     textPaint
@@ -68,7 +68,7 @@ fun StockChart(
             }
         }
         var lastX = 0f
-        var lastY = 0f
+        var lastY: Float
         val strokePath = androidx.compose.ui.graphics.Path().apply {
             val height = size.height
             for (i in infos.indices) {
