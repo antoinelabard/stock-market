@@ -16,7 +16,7 @@ interface StockRepository {
         symbol: String
     ): Resource<List<IntradayInfo>>
 
-    suspend fun getCompanyinfo(
+    suspend fun getCompanyInfo(
         symbol: String
     ): Resource<CompanyInfo>
 }
