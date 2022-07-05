@@ -21,18 +21,18 @@ import kotlin.math.roundToInt
 @Composable
 fun StockChart(
     modifier: Modifier = Modifier,
-    infos: List<IntradayInfo> = emptyList(),
+    intradayInfos: List<IntradayInfo> = emptyList(),
     graphColor: Color = Color.Green
 ) {
     val spacing = 100f
     val transparentGraphColor = remember {
         graphColor.copy(alpha = 0.5f)
     }
-    val upperValue = remember(infos) {
-        (infos.maxOfOrNull { it.close }?.plus(1))?.roundToInt() ?: 0
+    val upperValue = remember(intradayInfos) {
+        (intradayInfos.maxOfOrNull { it.close }?.plus(1))?.roundToInt() ?: 0
     }
-    val lowerValue = remember(infos) {
-        infos.minOfOrNull { it.close }?.toInt() ?: 0
+    val lowerValue = remember(intradayInfos) {
+        intradayInfos.minOfOrNull { it.close }?.toInt() ?: 0
     }
     val density = LocalDensity.current
     val textPaint = remember(density) {
@@ -43,9 +43,9 @@ fun StockChart(
         }
     }
     Canvas(modifier = modifier) {
-        val spacePerHour = (size.width - spacing) / infos.size
-        (0 until infos.size - 1 step 2).forEach { i ->
-            val info = infos[i]
+        val spacePerHour = (size.width - spacing) / intradayInfos.size
+        (0 until intradayInfos.size - 1 step 2).forEach { i ->
+            val info = intradayInfos[i]
             val hour = info.date.hour
             drawContext.canvas.nativeCanvas.apply {
                 drawText(
@@ -71,9 +71,9 @@ fun StockChart(
         var lastY: Float
         val strokePath = androidx.compose.ui.graphics.Path().apply {
             val height = size.height
-            for (i in infos.indices) {
-                val info = infos[i]
-                val nextInfo = infos.getOrNull(i + 1) ?: infos.last()
+            for (i in intradayInfos.indices) {
+                val info = intradayInfos[i]
+                val nextInfo = intradayInfos.getOrNull(i + 1) ?: intradayInfos.last()
                 val leftRatio = (info.close - lowerValue) / (upperValue - lowerValue)
                 val rightRatio = (nextInfo.close - lowerValue) / (upperValue - lowerValue)
 
