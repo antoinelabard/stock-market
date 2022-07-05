@@ -28,7 +28,7 @@ fun CompanyInfoScreen(
     viewModel: CompanyInfoViewModel = hiltViewModel()
 ) {
     val state = viewModel.state
-    if (state.error == null) {
+    if (state.companyInfoError == null) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -91,7 +91,6 @@ fun CompanyInfoScreen(
                             .height(250.dp)
                             .align(CenterHorizontally)
                     )
-
                 }
             }
         }
@@ -103,5 +102,7 @@ fun CompanyInfoScreen(
                 CircularProgressIndicator()
             }
         }
+    } else {
+        Text(state.companyInfoError)
     }
 }
