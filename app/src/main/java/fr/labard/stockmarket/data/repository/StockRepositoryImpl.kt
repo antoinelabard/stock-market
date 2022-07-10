@@ -61,7 +61,7 @@ class StockRepositoryImpl @Inject constructor(
             }
 
             remoteListing?.let { listings ->
-                dao.clearCompanyLitings()
+                dao.clearCompanyListings()
                 dao.insertCompanyListings(
                     listings.map { it.toCompanyListingEntity() }
                 )
